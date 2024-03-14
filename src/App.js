@@ -107,7 +107,7 @@ function App() {
   };
 
   const obtenerPrimeraVocal = (apellido) => {
-    const vocales = ['A', 'E', 'I', 'O', 'U'];
+    const vocales = ['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'];
     let vocalEncontrada = true;
     for (let i = 1; i < apellido.length; i++) {
         const letra = apellido[i].toUpperCase();
@@ -129,7 +129,7 @@ const obtenerPrimeraConsonanteNombre = () => {
       primerNombreGenerar = segundoNombre.toUpperCase();
     
       for (let letra of segundoNombre) {
-        if (['A', 'E', 'I', 'O', 'U'].includes(letra)) {
+        if (['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
           primeraConsonante = letra;
           break;
         }
@@ -138,7 +138,7 @@ const obtenerPrimeraConsonanteNombre = () => {
   } else {
     // Si el primer nombre no es 'MARIA' o 'JOSE', se busca la primera consonante del primer nombre.
     for (let letra of primerNombreGenerar) {
-      if (!['A', 'E', 'I', 'O', 'U'].includes(letra)) {
+      if (!['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
         primeraConsonante = letra;
         break;
       }
@@ -156,7 +156,7 @@ const obtenerPrimeraConsonanteNombre = () => {
 
  
 const obtenerPrimeraConsonantePrimerApellido = (apellido) => {
-  const vocales = ['A', 'E', 'I', 'O', 'U'];
+  const vocales = ['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'];
   let primeraConsonante = '';
   let encontradaConsonante = false;
   
@@ -175,7 +175,7 @@ const obtenerSegundaConsonante = (nombre) => {
   let consonantesEncontradas = 0;
   
   for (let letra of nombre.toUpperCase()) {
-    if (!['A', 'E', 'I', 'O', 'U'].includes(letra)) {
+    if (!['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
       consonantesEncontradas++;
       if (consonantesEncontradas === 2) {
         return letra;
@@ -191,7 +191,7 @@ const obtenerSegundaConsonante = (nombre) => {
 
 
 const obtenerSegundaConsonanteSegundoApellido = (segundoApellido) => {
-  const vocales = ['A', 'E', 'I', 'O', 'U'];
+  const vocales = ['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'];
   let consonanteEncontrada = false;
   let primeraVocalEncontrada = false;
   
