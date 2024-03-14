@@ -27,7 +27,7 @@ function App() {
       'R': 28, 'S': 29, 'T': 30, 'U': 31, 'V': 32, 'W': 33, 'X': 34, 'Y': 35, 'Z': 36
     };
 
-    const multiplicadores = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1, 1]; // Corregida la secuencia de multiplicadores
+    const multiplicadores = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1, 1]; 
 
     let suma = 0;
     for (let i = 0; i < curpParcial.length; i++) {
@@ -92,8 +92,6 @@ function App() {
     const digitoVerificador = obtenerDigitoVerificador(curpParcial);
     const consonantePrimerApellido = obtenerPrimeraConsonantePrimerApellido(primerApellido);
     const consonanteSegundoApellido = obtenerSegundaConsonanteSegundoApellido(segundoApellido);
-    //const consonanteNombre = obtenerPrimeraConsonanteNombre(nombre);
-    //const consonanteSegundoNombre = obtenerPrimeraConsonanteNombre(nombre[0], segundoNombre[0])
     const segundaConsonanteNombre = obtenerSegundaConsonante(nombre);
     const curpCompleta = `${curpParcial}${consonantePrimerApellido}${consonanteSegundoApellido}${segundaConsonanteNombre}${digitoVerificador}`;
 
@@ -101,7 +99,7 @@ function App() {
 
     const curpQR = curpCompleta;
 
-  // Actualizar el estado con el código QR generado
+  
   setCurpQR(curpQR);
 
     
@@ -119,38 +117,44 @@ function App() {
             return letra;
         }
     }
-    return ''; // Si no se encuentra ninguna vocal, devuelve una cadena vacía
+    return ''; 
 };
 
-const obtenerPrimeraConsonanteNombre = (nombre, segundoNombre) => {
+const obtenerPrimeraConsonanteNombre = () => {
+  let primeraConsonante = '';
   let primerNombreGenerar = nombre.toUpperCase();
-  let segundaConsonante = '';
-
-  // Verificar si el primer nombre es "María" o "José"
+  
   if (primerNombreGenerar === 'MARIA' || primerNombreGenerar === 'JOSE') {
-    // Si es así, tomar la inicial del segundo nombre si está presente
-    if (segundoNombre) {
-      segundaConsonante = segundoNombre.toUpperCase()[0];
-    }
+    
+      primerNombreGenerar = segundoNombre.toUpperCase();
+    
+      for (let letra of segundoNombre) {
+        if (['A', 'E', 'I', 'O', 'U'].includes(letra)) {
+          primeraConsonante = letra;
+          break;
+        }
+      }
+    
   } else {
-    // Si no es "María" o "José", buscar la primera consonante del primer nombre
+    // Si el primer nombre no es 'MARIA' o 'JOSE', se busca la primera consonante del primer nombre.
     for (let letra of primerNombreGenerar) {
       if (!['A', 'E', 'I', 'O', 'U'].includes(letra)) {
-        segundaConsonante = letra; // Devuelve la primera consonante encontrada
+        primeraConsonante = letra;
         break;
       }
     }
   }
 
-  return segundaConsonante; // Devuelve una cadena vacía si no se encuentra ninguna consonante
+  return primeraConsonante; 
 };
 
 
 
 
- // Función para obtener las consonantes de una cadena de texto, tomando la segunda consonante
-// Función para obtener la primera consonante del primer apellido
 
+
+
+ 
 const obtenerPrimeraConsonantePrimerApellido = (apellido) => {
   const vocales = ['A', 'E', 'I', 'O', 'U'];
   let primeraConsonante = '';
@@ -179,13 +183,13 @@ const obtenerSegundaConsonante = (nombre) => {
     }
   }
 
-  return ''; // Devuelve una cadena vacía si no se encuentra la segunda consonante
+  return ''; 
 };
 
 
 
 
-// Función para obtener la segunda consonante del segundo apellido
+
 const obtenerSegundaConsonanteSegundoApellido = (segundoApellido) => {
   const vocales = ['A', 'E', 'I', 'O', 'U'];
   let consonanteEncontrada = false;
@@ -198,7 +202,7 @@ const obtenerSegundaConsonanteSegundoApellido = (segundoApellido) => {
       consonanteEncontrada = true;
     } else if (!primeraVocalEncontrada) {
       primeraVocalEncontrada = true;
-      consonanteEncontrada = true; // Si la primera letra es una vocal, empezamos a buscar la consonante siguiente
+      consonanteEncontrada = true; 
     }
   }
   
