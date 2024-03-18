@@ -181,7 +181,7 @@ const obtenerSegundaConsonante = (nombre) => {
 
   for (let letra of nombre.toUpperCase()) {
     if (['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
-      comenzarConteo = true; // Si encuentra una vocal, comienza el conteo de consonantes
+      comenzarConteo = true; 
     } else if (comenzarConteo) {
       consonantesEncontradas++;
       if (consonantesEncontradas === 1) {
@@ -191,7 +191,7 @@ const obtenerSegundaConsonante = (nombre) => {
         return letra;
       }
     } else {
-      consonantesEncontradas = 1; // Si encuentra una consonante al inicio del nombre, comienza el conteo desde 1
+      consonantesEncontradas = 1; 
     }
   }
 
