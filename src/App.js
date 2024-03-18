@@ -120,23 +120,26 @@ function App() {
     return ''; 
 };
 
-const obtenerPrimeraConsonanteNombre = () => {
+const obtenerPrimeraConsonanteNombre = (nombre, segundoNombre) => {
   let primeraConsonante = '';
   let primerNombreGenerar = nombre.toUpperCase();
   
   if (primerNombreGenerar === 'MARIA' || primerNombreGenerar === 'JOSE') {
-    
-      primerNombreGenerar = segundoNombre.toUpperCase();
-    
-      for (let letra of segundoNombre) {
-        if (['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
+    if (segundoNombre && segundoNombre.length > 0) {
+      for (let letra of segundoNombre.toUpperCase()) {
+        if (!['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
           primeraConsonante = letra;
           break;
         }
       }
-    
+    }
   } else {
-    // Si el primer nombre no es 'MARIA' o 'JOSE', se busca la primera consonante del primer nombre.
+    for (let letra of primerNombreGenerar) {
+      if (['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
+        primeraConsonante = letra;
+        break;
+      }
+    }
     for (let letra of primerNombreGenerar) {
       if (!['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
         primeraConsonante = letra;
@@ -147,6 +150,7 @@ const obtenerPrimeraConsonanteNombre = () => {
 
   return primeraConsonante; 
 };
+
 
 
 
@@ -173,18 +177,28 @@ const obtenerPrimeraConsonantePrimerApellido = (apellido) => {
 
 const obtenerSegundaConsonante = (nombre) => {
   let consonantesEncontradas = 0;
-  
+  let comenzarConteo = false;
+
   for (let letra of nombre.toUpperCase()) {
-    if (!['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
+    if (['A', 'E', 'I', 'O', 'U','À', 'È', 'Ì', 'Ò', 'Ù'].includes(letra)) {
+      comenzarConteo = true; // Si encuentra una vocal, comienza el conteo de consonantes
+    } else if (comenzarConteo) {
       consonantesEncontradas++;
+      if (consonantesEncontradas === 1) {
+        return letra;
+      }
       if (consonantesEncontradas === 2) {
         return letra;
       }
+    } else {
+      consonantesEncontradas = 1; // Si encuentra una consonante al inicio del nombre, comienza el conteo desde 1
     }
   }
 
-  return ''; 
+  return '';
 };
+
+
 
 
 
