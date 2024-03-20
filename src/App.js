@@ -44,6 +44,30 @@ function App() {
     setNumeroAleatorio(randomNum);
   };
 
+   // Función para manejar cambios en el primer apellido
+   const handlePrimerApellidoChange = (e) => {
+    const value = e.target.value.replace(/[^A-Za-z]/g, ''); // Elimina caracteres que no sean letras
+    setPrimerApellido(value);
+  };
+
+  
+  const handleSegundoApellidoChange = (e) => {
+    const value = e.target.value.replace(/[^A-Za-z]/g, ''); 
+    setSegundoApellido(value);
+  };
+
+  
+  const handleNombreChange = (e) => {
+    const value = e.target.value.replace(/[^A-Za-z]/g, ''); 
+    setNombre(value);
+  };
+
+ 
+  const handleSegundoNombreChange = (e) => {
+    const value = e.target.value.replace(/[^A-Za-z]/g, ''); 
+    setSegundoNombre(value);
+  };
+
   const handleCalcular = () => {
     if (!primerApellido || !segundoApellido || !nombre || !sexo || !entidadFederativa || !fechaNacimiento) {
       alert('Por favor completa todos los campos antes de calcular la CURP.');
@@ -257,19 +281,19 @@ const obtenerSegundaConsonanteSegundoApellido = (segundoApellido) => {
         <h2>Ingresa tus datos</h2>
         <div>
           <label>Primer Apellido:</label>
-          <input type="text" value={primerApellido} onChange={(e) => setPrimerApellido(e.target.value)} />
+          <input type="text" value={primerApellido} onChange={handlePrimerApellidoChange} />
         </div>
         <div>
           <label>Segundo Apellido:</label>
-          <input type="text" value={segundoApellido} onChange={(e) => setSegundoApellido(e.target.value)} />
+          <input type="text" value={segundoApellido} onChange={handleSegundoApellidoChange} />
         </div>
         <div>
           <label>Nombre:</label>
-          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+          <input type="text" value={nombre} onChange={handleNombreChange} />
         </div>
         <div>
           <label>Segundo Nombre:</label>
-          <input type='text' value={segundoNombre} onChange={(e) => setSegundoNombre(e.target.value)} />
+          <input type='text' value={segundoNombre} onChange={handleSegundoNombreChange} />
         </div>
         <div>
           <label>Fecha de Nacimiento:</label>
