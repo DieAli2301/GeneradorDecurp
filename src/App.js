@@ -302,6 +302,8 @@ const obtenerSegundaConsonanteSegundoApellido = (segundoApellido) => {
             onChange={(date) => setFechaNacimiento(date)}
             dateFormat="dd/MM/yyyy"
             placeholderText="Selecciona la fecha"
+            minDate={new Date(1900, 0, 1)} 
+            maxDate={new Date(2024, 11, 31)} 
           />
         </div>
         <div>
